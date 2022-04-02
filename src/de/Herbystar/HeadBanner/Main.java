@@ -71,6 +71,9 @@ public class Main extends JavaPlugin implements Listener {
 	public ArrayList<Player> BP13 = new ArrayList<Player>();
 	public ArrayList<Player> BP14 = new ArrayList<Player>();
 	
+	List<ArrayList<Player>> pageTwoPool = Arrays.asList(
+			BP1, BP2, BP3, BP4, BP5, BP6, BP7, BP8, BP9, BP10, BP11, BP12, BP13, BP14);
+	
 	public ArrayList<Player> BA1 = new ArrayList<Player>();
 	public ArrayList<Player> BA2 = new ArrayList<Player>();
 	public ArrayList<Player> BA3 = new ArrayList<Player>();
@@ -137,7 +140,13 @@ public class Main extends JavaPlugin implements Listener {
 				}
 			}
 		} else if(poolId == 2) {
-			
+			for(ArrayList<Player> lPlayer : pageTwoPool) {
+				if(lPlayer == toAddTo) {
+					lPlayer.add(player);
+				} else {
+					lPlayer.remove(player);
+				}
+			}			
 		} else if(poolId == 3) {
 			
 		}

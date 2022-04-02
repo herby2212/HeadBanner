@@ -20,16 +20,6 @@ import de.Herbystar.HeadBanner.Main;
 
 public class ItemHandler {
 	
-	public static class ToggleItem {
-		String configPath = "";
-		String material = "";
-
-		public ToggleItem(String mat, String confPath) {
-			this.configPath = confPath;
-			this.material = mat;
-		}
-	}
-	
 	public static class Banner {
 		public ItemStack item;
 		public String id;
@@ -59,16 +49,6 @@ public class ItemHandler {
 	}
 	
 	public static List<Banner> bannerCollection = new ArrayList<Banner>();
-	
-	//Normal Switch Items
-	private static ToggleItem ti1;
-	private static ToggleItem ti2;
-	
-	//Inventory Items
-	private static ToggleItem tiIV1;
-	private static ToggleItem tiIV2;
-	private static ToggleItem tiIV3;
-	private static ToggleItem tiIVF;
 	
 	@SuppressWarnings("deprecation")
 	public static void createJoinItem(Player player, boolean setItem) {
@@ -397,92 +377,145 @@ public class ItemHandler {
 
 	}
 	
-	public static void createToggleItem(int id, Player player, boolean setItem, boolean updateInv) {
-		ItemHandler.pullMatsAndPath();
-		
-		if(player == null) {
-			return;
+	public static Inventory getInventoryPageThree() {
+		if(Main.instance.inv3 != null) {
+			return Main.instance.inv3;
 		}
+		Inventory i = Bukkit.getServer().createInventory(null, Main.instance.getConfig().getInt("HeadBanner.InventorySize.3"), 
+				Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.BannerInventory.Side3Title")));
 		
-		String configPath = ItemHandler.getToggleItemBasedOnID(id).configPath;
-		String material = ItemHandler.getToggleItemBasedOnID(id).material;
-				
-		XMaterial xm = XMaterial.matchXMaterial(material).get();
+		ItemStack BA1 = new Banner("BA1", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.29"), XMaterial.RED_BANNER, DyeColor.RED, 
+				Arrays.asList(
+						new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR),
+						new Pattern(DyeColor.BLACK, PatternType.RHOMBUS_MIDDLE),
+						new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE),
+						new Pattern(DyeColor.WHITE, PatternType.CIRCLE_MIDDLE),
+						new Pattern(DyeColor.RED, PatternType.STRIPE_TOP),
+						new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM))).item;	
+		ItemStack BA2 = new Banner("BA2", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.30"), XMaterial.WHITE_BANNER, DyeColor.WHITE,
+				Arrays.asList(
+						new Pattern(DyeColor.BLACK, PatternType.FLOWER),
+						new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR),
+						new Pattern(DyeColor.BLACK, PatternType.TRIANGLES_TOP),
+						new Pattern(DyeColor.WHITE, PatternType.STRIPE_CENTER),
+						new Pattern(DyeColor.BLACK, PatternType.CREEPER),
+						new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM))).item;
+		ItemStack BA3 = new Banner("BA3", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.31"), XMaterial.PURPLE_BANNER, DyeColor.PURPLE,
+				Arrays.asList(
+						new Pattern(DyeColor.PURPLE, PatternType.STRIPE_MIDDLE),
+						new Pattern(DyeColor.BLACK, PatternType.CREEPER),
+						new Pattern(DyeColor.BLACK, PatternType.CURLY_BORDER),
+						new Pattern(DyeColor.BLACK, PatternType.STRIPE_CENTER),
+						new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_TOP))).item;
+		ItemStack BA4 = new Banner("BA4", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.32"), XMaterial.ORANGE_BANNER, DyeColor.ORANGE,
+				Arrays.asList(
+						new Pattern(DyeColor.YELLOW, PatternType.BRICKS),
+						new Pattern(DyeColor.CYAN, PatternType.HALF_HORIZONTAL),
+						new Pattern(DyeColor.LIME, PatternType.FLOWER),
+						new Pattern(DyeColor.CYAN, PatternType.BORDER),
+						new Pattern(DyeColor.LIME, PatternType.CIRCLE_MIDDLE),
+						new Pattern(DyeColor.CYAN, PatternType.CURLY_BORDER))).item;
+		ItemStack BA5 = new Banner("BA5", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.33"), XMaterial.WHITE_BANNER, DyeColor.WHITE,
+				Arrays.asList(
+						new Pattern(DyeColor.GREEN, PatternType.RHOMBUS_MIDDLE),
+						new Pattern(DyeColor.BROWN, PatternType.STRIPE_BOTTOM),
+						new Pattern(DyeColor.ORANGE, PatternType.STRIPE_CENTER),
+						new Pattern(DyeColor.BROWN, PatternType.BORDER),
+						new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE),
+						new Pattern(DyeColor.BLACK, PatternType.HALF_HORIZONTAL))).item;
+		ItemStack BA6 = new Banner("BA6", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.34"), XMaterial.WHITE_BANNER, DyeColor.WHITE,
+				Arrays.asList(
+						new Pattern(DyeColor.LIGHT_BLUE, PatternType.STRIPE_BOTTOM),
+						new Pattern(DyeColor.BROWN, PatternType.STRAIGHT_CROSS),
+						new Pattern(DyeColor.WHITE, PatternType.HALF_VERTICAL),
+						new Pattern(DyeColor.BROWN, PatternType.TRIANGLES_TOP),
+						new Pattern(DyeColor.BROWN, PatternType.HALF_HORIZONTAL_MIRROR),
+						new Pattern(DyeColor.LIGHT_BLUE, PatternType.CURLY_BORDER),
+						new Pattern(DyeColor.BLUE, PatternType.STRIPE_BOTTOM))).item;
+		ItemStack BA7 = new Banner("BA7", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.35"), XMaterial.RED_BANNER, DyeColor.RED,
+				Arrays.asList(
+						new Pattern(DyeColor.BLUE, PatternType.TRIANGLE_BOTTOM),
+						new Pattern(DyeColor.RED, PatternType.STRIPE_SMALL),
+						new Pattern(DyeColor.WHITE, PatternType.STRIPE_MIDDLE),
+						new Pattern(DyeColor.BLUE, PatternType.CURLY_BORDER),
+						new Pattern(DyeColor.RED, PatternType.CIRCLE_MIDDLE),
+						new Pattern(DyeColor.BLUE, PatternType.BORDER))).item;
 
-		ItemStack PS = xm.parseItem();
-//	    ItemStack PS3 = new ItemStack(plugin.getConfig().getInt("PlayerToggle.Items.Toggler1.ID"), 1, (byte)plugin.getConfig().getInt("PlayerToggle.Items.Toggler1.DataValue"));
-	    ItemMeta PSMeta = PS.getItemMeta();
-	    PSMeta.setLore(Arrays.asList(new String[] { Main.instance.getConfig().getString(configPath + "Lore").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä") }));
-	    PSMeta.setDisplayName(Main.instance.getConfig().getString(configPath + "Name").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-	    PS.setItemMeta(PSMeta);
-	    
-	    if(setItem == true) {
-		    player.getInventory().setItem(Main.instance.getConfig().getInt(configPath + "Slot(0-8)"), PS);
-	    }
-	    if(updateInv == true && player.getInventory().contains(PS)) {
-		      player.getInventory().remove(PS);
-		      player.updateInventory();
-	    }
-	}
-	
-	public static ItemStack returnCustomizedItemStack(int id) {
-		ItemHandler.pullMatsAndPath();
+		ItemStack C = new ItemStack(Material.SLIME_BALL);
+		ItemMeta CM = C.getItemMeta();
+		CM.setDisplayName(Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.GUI.CloseItemName")));
+		C.setItemMeta(CM);
 		
-		String configPath = ItemHandler.getToggleItemBasedOnID(id).configPath;
-		String material = ItemHandler.getToggleItemBasedOnID(id).material;
-				
-		XMaterial xm = XMaterial.matchXMaterial(material).get();
+		ItemStack B = new ItemStack(Material.MAGMA_CREAM);
+		ItemMeta BM = B.getItemMeta();
+		BM.setDisplayName(Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.GUI.BackSide")));
+		B.setItemMeta(BM);
+		
+		ItemStack R = new ItemStack(Material.ARMOR_STAND);
+		ItemMeta RM = R.getItemMeta();
+		RM.setDisplayName(Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.GUI.RotateItemName")));
+		R.setItemMeta(RM);
+		
+		//1 Reihe
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.29") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.29"), BA1);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.30") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.30"), BA2);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.31") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.31"), BA3);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.32") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.32"), BA4);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.33") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.33"), BA5);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.34") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.34"), BA6);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.35") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.35"), BA7);
+		}
+		
+		//2 Reihe
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.36") == false) {
+//			i.setItem(plugin.getConfig().getInt("HeadBanner.ItemSlot.36"), BA8);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.37") == false) {
+//			i.setItem(plugin.getConfig().getInt("HeadBanner.ItemSlot.37"), BA9);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.38") == false) {
+//			i.setItem(plugin.getConfig().getInt("HeadBanner.ItemSlot.38"), BA10);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.39") == false) {
+//			i.setItem(plugin.getConfig().getInt("HeadBanner.ItemSlot.39"), BA11);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.40") == false) {
+//			i.setItem(plugin.getConfig().getInt("HeadBanner.ItemSlot.40"), BA12);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.41") == false) {
+//			i.setItem(plugin.getConfig().getInt("HeadBanner.ItemSlot.41"), BA13);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.42") == false) {
+//			i.setItem(plugin.getConfig().getInt("HeadBanner.ItemSlot.42"), BA14);				
+		}
+		
+		
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.RotateItem") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.RotateItem3"), R);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.BackSide") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.BackSide3"), B);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.CloseItem") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.CloseItem3"), C);
+		}
+		
+		Main.instance.inv3 = i;
+		return i;
 
-		ItemStack PS = xm.parseItem();
-	    ItemMeta PSMeta = PS.getItemMeta();
-	    PSMeta.setLore(Arrays.asList(new String[] { Main.instance.getConfig().getString(configPath + "Lore").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä") }));
-	    PSMeta.setDisplayName(Main.instance.getConfig().getString(configPath + "Name").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-	    PS.setItemMeta(PSMeta);
-	    
-	    return PS;
-	}
-	
-	public static boolean compareMaterials(Material mat, int id) {
-		XMaterial xm = XMaterial.matchXMaterial(ItemHandler.getToggleItemBasedOnID(id).material).get();
-//		if(mat == xm.parseMaterial()) {
-//			return true;
-//		}
-		 return false;
-	}
-	
-	private static void pullMatsAndPath() {
-		if(ti1 != null && ti2 != null && tiIV1 != null && tiIV2 != null && tiIV3 != null && tiIVF != null) {
-			return;
-		}
-		ti1 = new ToggleItem(Main.instance.getConfig().getString("PlayerToggle.Items.Toggler1.Material"), "PlayerToggle.Items.Toggler1.");
-		
-		ti2 = new ToggleItem(Main.instance.getConfig().getString("PlayerToggle.Items.Toggler2.Material"), "PlayerToggle.Items.Toggler2.");
-		
-		tiIV1 = new ToggleItem(Main.instance.getConfig().getString("PlayerToggle.Inventory.Item1.Material"), "PlayerToggle.Inventory.Item1.");
-		
-		tiIV2 = new ToggleItem(Main.instance.getConfig().getString("PlayerToggle.Inventory.Item2.Material"), "PlayerToggle.Inventory.Item2.");
-		
-		tiIV3 = new ToggleItem(Main.instance.getConfig().getString("PlayerToggle.Inventory.Item3.Material"), "PlayerToggle.Inventory.Item3.");
-		
-		tiIVF = new ToggleItem(Main.instance.getConfig().getString("PlayerToggle.Inventory.Filler.Material"), "PlayerToggle.Inventory.Filler.");
-		
-	}
-	
-	private static ToggleItem getToggleItemBasedOnID(int id) {
-		if(id == 1) {
-			return ti1;
-		} else if(id == 2) {
-			return ti2;
-		} else if(id == 5) {
-			return tiIV1;
-		} else if(id == 6) {
-			return tiIV2;
-		} else if(id == 7) {
-			return tiIV3;
-		} else if(id == 10) {
-			return tiIVF;
-		}
-		return null;
 	}
 
 }
