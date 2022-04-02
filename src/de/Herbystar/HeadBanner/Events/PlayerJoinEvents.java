@@ -1,17 +1,11 @@
 package de.Herbystar.HeadBanner.Events;
 
-import java.util.Arrays;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
-
 import de.Herbystar.HeadBanner.Main;
+import de.Herbystar.HeadBanner.Utilities.ItemHandler;
 
 public class PlayerJoinEvents implements Listener {
 	
@@ -20,20 +14,20 @@ public class PlayerJoinEvents implements Listener {
 		plugin = main;
 	}
 	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		if(plugin.getConfig().getBoolean("HeadBanner.Enabled") == true) {
 			if(p.isOp()) {
 				if(plugin.UpdateAviable == true) {
-					p.sendMessage("§4[§aHeadBanner§4] §a-=> Update is available! <=-");
-					p.sendMessage("§aDownload: §ehttp://herbystar.eu/resources/headbanner-1-8-1-12-with-gui.16/");
+//					p.sendMessage("§4[§aHeadBanner§4] §a-=> Update is available! <=-");
 				}
 			}
 	    	if(plugin.getConfig().getStringList("HeadBanner.Worlds").contains(p.getWorld().getName())) {
 				if(plugin.getConfig().getBoolean("HeadBanner.JoinItem.GiveOnJoin") == true) {
 					if(p.hasPermission("HeadBanner.Item.Join") | p.isOp()) {
+						ItemHandler.createJoinItem(p, true);
+						/*
 						ItemStack HB = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
 					    SkullMeta HBM = (SkullMeta)Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
 					    try {
@@ -51,8 +45,11 @@ public class PlayerJoinEvents implements Listener {
 					    } else {
 					    	p.getInventory().addItem(HB);
 					    }
+					    */
 					}
-				} else {			
+				} else {
+					ItemHandler.createJoinItem(p, false);
+					/*
 					ItemStack HB = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
 				    SkullMeta HBM = (SkullMeta)Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
 				    HBM.setOwningPlayer(p);
@@ -62,7 +59,8 @@ public class PlayerJoinEvents implements Listener {
 				    if(p.getInventory().contains(HB.getType())) {
 				    	p.getInventory().remove(HB.getType());
 				    	p.updateInventory();
-				    }   
+				    } 
+				    */  
 				}
 	    	}
 		}

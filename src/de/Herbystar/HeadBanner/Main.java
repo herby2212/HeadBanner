@@ -1,6 +1,8 @@
 package de.Herbystar.HeadBanner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -35,6 +37,7 @@ public class Main extends JavaPlugin implements Listener {
 	public ArrayList<String> RB = new ArrayList<String>();
 	
 	public ArrayList<Player> BC = new ArrayList<Player>();
+	
 	public ArrayList<Player> B1 = new ArrayList<Player>();
 	public ArrayList<Player> B2 = new ArrayList<Player>();
 	public ArrayList<Player> B3 = new ArrayList<Player>();
@@ -49,6 +52,9 @@ public class Main extends JavaPlugin implements Listener {
 	public ArrayList<Player> B12 = new ArrayList<Player>();
 	public ArrayList<Player> B13 = new ArrayList<Player>();
 	public ArrayList<Player> B14 = new ArrayList<Player>();
+	
+	List<ArrayList<Player>> pageOnePool = Arrays.asList(
+			B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14);
 	
 	public ArrayList<Player> BP1 = new ArrayList<Player>();
 	public ArrayList<Player> BP2 = new ArrayList<Player>();
@@ -120,6 +126,22 @@ public class Main extends JavaPlugin implements Listener {
 		}
 	}
 	*/
+	
+	public void addToBannerList(Player player, ArrayList<Player> toAddTo, int poolId) {
+		if(poolId == 1) {
+			for(ArrayList<Player> lPlayer : pageOnePool) {
+				if(lPlayer == toAddTo) {
+					lPlayer.add(player);
+				} else {
+					lPlayer.remove(player);
+				}
+			}
+		} else if(poolId == 2) {
+			
+		} else if(poolId == 3) {
+			
+		}
+	}
 	
 	public String replaceString(String string) {
 		string = string.replace("&", "§");
