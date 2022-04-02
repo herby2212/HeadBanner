@@ -89,6 +89,9 @@ public class Main extends JavaPlugin implements Listener {
 	public ArrayList<Player> BA13 = new ArrayList<Player>();
 	public ArrayList<Player> BA14 = new ArrayList<Player>();
 	
+	List<ArrayList<Player>> pageThreePool = Arrays.asList(
+			BA1, BA2, BA3, BA4, BA5, BA6, BA7, BA8, BA9, BA10, BA11, BA12, BA13, BA14);
+	
 	public int rotate;
 	public int rotateid;
 		
@@ -131,24 +134,20 @@ public class Main extends JavaPlugin implements Listener {
 	*/
 	
 	public void addToBannerList(Player player, ArrayList<Player> toAddTo, int poolId) {
+		List<ArrayList<Player>> l = null;
 		if(poolId == 1) {
-			for(ArrayList<Player> lPlayer : pageOnePool) {
-				if(lPlayer == toAddTo) {
-					lPlayer.add(player);
-				} else {
-					lPlayer.remove(player);
-				}
-			}
+			l = pageOnePool;
 		} else if(poolId == 2) {
-			for(ArrayList<Player> lPlayer : pageTwoPool) {
-				if(lPlayer == toAddTo) {
-					lPlayer.add(player);
-				} else {
-					lPlayer.remove(player);
-				}
-			}			
+			l = pageTwoPool;		
 		} else if(poolId == 3) {
-			
+			l = pageThreePool;
+		}
+		for(ArrayList<Player> lPlayer : l) {
+			if(lPlayer == toAddTo) {
+				lPlayer.add(player);
+			} else {
+				lPlayer.remove(player);
+			}
 		}
 	}
 	

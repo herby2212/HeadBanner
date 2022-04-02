@@ -684,44 +684,18 @@ public class InventoryInteractEvents implements Listener {
 	}
 	
 		
-		/*
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void OnBannerMenuInv3Interact(InventoryClickEvent e) {
 		final Player p = (Player) e.getWhoClicked();
-		if(e.getInventory().getName().equals(plugin.getConfig().getString("HeadBanner.BannerInventory.Side3Title").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
+		if(getInventoryName(e).equals(plugin.getConfig().getString("HeadBanner.BannerInventory.Side3Title").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 			e.setCancelled(true);
-			if(e.getCurrentItem() != null && e.getCurrentItem().getType().equals(Material.BANNER)) {
+			if(e.getCurrentItem() != null && e.getCurrentItem().getType().toString().contains("BANNER")) {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.29").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.29")) {
 						if(!plugin.BA1.contains(p)) {
-							ItemStack BA1 = new ItemStack(Material.BANNER);
-							BannerMeta BA1M = (BannerMeta) BA1.getItemMeta();
-							BA1M.setBaseColor(DyeColor.RED);
-							BA1M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.29").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-							BA1M.addPattern(new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR));
-							BA1M.addPattern(new Pattern(DyeColor.BLACK, PatternType.RHOMBUS_MIDDLE));
-							BA1M.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE));
-							BA1M.addPattern(new Pattern(DyeColor.WHITE, PatternType.CIRCLE_MIDDLE));
-							BA1M.addPattern(new Pattern(DyeColor.RED, PatternType.STRIPE_TOP));
-							BA1M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM));
-							BA1.setItemMeta(BA1M);
-							p.getInventory().setHelmet(BA1);
+							p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA1").item);
 							checkEffect(29, p);
-							plugin.BA1.add(p);
-							plugin.BA2.remove(p);
-							plugin.BA3.remove(p);
-							plugin.BA4.remove(p);
-							plugin.BA5.remove(p);
-							plugin.BA6.remove(p);
-							plugin.BA7.remove(p);
-							plugin.BA8.remove(p);
-							plugin.BA9.remove(p);
-							plugin.BA10.remove(p);
-							plugin.BA11.remove(p);
-							plugin.BA12.remove(p);
-							plugin.BA13.remove(p);
-							plugin.BA14.remove(p);
+							Main.instance.addToBannerList(p, plugin.BA1, 3);
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageNewBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
 						} else {
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageTheSameBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
@@ -733,33 +707,9 @@ public class InventoryInteractEvents implements Listener {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.30").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.30")) {
 						if(!plugin.BA2.contains(p)) {
-							ItemStack BA2 = new ItemStack(Material.BANNER);
-							BannerMeta BA2M = (BannerMeta) BA2.getItemMeta();
-							BA2M.setBaseColor(DyeColor.WHITE);
-							BA2M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.30").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-							BA2M.addPattern(new Pattern(DyeColor.BLACK, PatternType.FLOWER));
-							BA2M.addPattern(new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR));
-							BA2M.addPattern(new Pattern(DyeColor.BLACK, PatternType.TRIANGLES_TOP));
-							BA2M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_CENTER));
-							BA2M.addPattern(new Pattern(DyeColor.BLACK, PatternType.CREEPER));
-							BA2M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM));
-							BA2.setItemMeta(BA2M);
-							p.getInventory().setHelmet(BA2);
+							p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA2").item);
 							checkEffect(30, p);
-							plugin.BA2.add(p);
-							plugin.BA1.remove(p);
-							plugin.BA3.remove(p);
-							plugin.BA4.remove(p);
-							plugin.BA5.remove(p);
-							plugin.BA6.remove(p);
-							plugin.BA7.remove(p);
-							plugin.BA8.remove(p);
-							plugin.BA9.remove(p);
-							plugin.BA10.remove(p);
-							plugin.BA11.remove(p);
-							plugin.BA12.remove(p);
-							plugin.BA13.remove(p);
-							plugin.BA14.remove(p);
+							Main.instance.addToBannerList(p, plugin.BA2, 3);
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageNewBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
 						} else {
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageTheSameBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
@@ -771,32 +721,9 @@ public class InventoryInteractEvents implements Listener {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.31").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.31")) {
 						if(!plugin.BA3.contains(p)) {
-							ItemStack BA3 = new ItemStack(Material.BANNER);
-							BannerMeta BA3M = (BannerMeta) BA3.getItemMeta();
-							BA3M.setBaseColor(DyeColor.PURPLE);
-							BA3M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.31").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-							BA3M.addPattern(new Pattern(DyeColor.PURPLE, PatternType.STRIPE_MIDDLE));
-							BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.CREEPER));
-							BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.CURLY_BORDER));
-							BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_CENTER));
-							BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_TOP));
-							BA3.setItemMeta(BA3M);
-							p.getInventory().setHelmet(BA3);
+							p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA3").item);
 							checkEffect(31, p);
-							plugin.BA3.add(p);
-							plugin.BA2.remove(p);
-							plugin.BA1.remove(p);
-							plugin.BA4.remove(p);
-							plugin.BA5.remove(p);
-							plugin.BA6.remove(p);
-							plugin.BA7.remove(p);
-							plugin.BA8.remove(p);
-							plugin.BA9.remove(p);
-							plugin.BA10.remove(p);
-							plugin.BA11.remove(p);
-							plugin.BA12.remove(p);
-							plugin.BA13.remove(p);
-							plugin.BA14.remove(p);
+							Main.instance.addToBannerList(p, plugin.BA3, 3);
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageNewBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
 						} else {
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageTheSameBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
@@ -808,33 +735,9 @@ public class InventoryInteractEvents implements Listener {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.32").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.32")) {
 						if(!plugin.BA4.contains(p)) {
-							ItemStack BA4 = new ItemStack(Material.BANNER);
-							BannerMeta BA4M = (BannerMeta) BA4.getItemMeta();
-							BA4M.setBaseColor(DyeColor.ORANGE);
-							BA4M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.32").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-							BA4M.addPattern(new Pattern(DyeColor.YELLOW, PatternType.BRICKS));
-							BA4M.addPattern(new Pattern(DyeColor.CYAN, PatternType.HALF_HORIZONTAL));
-							BA4M.addPattern(new Pattern(DyeColor.LIME, PatternType.FLOWER));
-							BA4M.addPattern(new Pattern(DyeColor.CYAN, PatternType.BORDER));
-							BA4M.addPattern(new Pattern(DyeColor.LIME, PatternType.CIRCLE_MIDDLE));
-							BA4M.addPattern(new Pattern(DyeColor.CYAN, PatternType.CURLY_BORDER));
-							BA4.setItemMeta(BA4M);
-							p.getInventory().setHelmet(BA4);
+							p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA4").item);
 							checkEffect(32, p);
-							plugin.BA4.add(p);
-							plugin.BA1.remove(p);
-							plugin.BA2.remove(p);
-							plugin.BA3.remove(p);
-							plugin.BA5.remove(p);
-							plugin.BA6.remove(p);
-							plugin.BA7.remove(p);
-							plugin.BA8.remove(p);
-							plugin.BA9.remove(p);
-							plugin.BA10.remove(p);
-							plugin.BA11.remove(p);
-							plugin.BA12.remove(p);
-							plugin.BA13.remove(p);
-							plugin.BA14.remove(p);
+							Main.instance.addToBannerList(p, plugin.BA4, 3);
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageNewBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
 						} else {
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageTheSameBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
@@ -846,33 +749,9 @@ public class InventoryInteractEvents implements Listener {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.33").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.33")) {
 						if(!plugin.BA5.contains(p)) {
-							ItemStack BA5 = new ItemStack(Material.BANNER);
-							BannerMeta BA5M = (BannerMeta) BA5.getItemMeta();
-							BA5M.setBaseColor(DyeColor.WHITE);
-							BA5M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.33").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-							BA5M.addPattern(new Pattern(DyeColor.GREEN, PatternType.RHOMBUS_MIDDLE));
-							BA5M.addPattern(new Pattern(DyeColor.BROWN, PatternType.STRIPE_BOTTOM));
-							BA5M.addPattern(new Pattern(DyeColor.ORANGE, PatternType.STRIPE_CENTER));
-							BA5M.addPattern(new Pattern(DyeColor.BROWN, PatternType.BORDER));
-							BA5M.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE));
-							BA5M.addPattern(new Pattern(DyeColor.BLACK, PatternType.HALF_HORIZONTAL));
-							BA5.setItemMeta(BA5M);
-							p.getInventory().setHelmet(BA5);
+							p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA5").item);
 							checkEffect(33, p);
-							plugin.BA5.add(p);
-							plugin.BA1.remove(p);
-							plugin.BA2.remove(p);
-							plugin.BA3.remove(p);
-							plugin.BA4.remove(p);
-							plugin.BA6.remove(p);
-							plugin.BA7.remove(p);
-							plugin.BA8.remove(p);
-							plugin.BA9.remove(p);
-							plugin.BA10.remove(p);
-							plugin.BA11.remove(p);
-							plugin.BA12.remove(p);
-							plugin.BA13.remove(p);
-							plugin.BA14.remove(p);
+							Main.instance.addToBannerList(p, plugin.BA5, 3);
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageNewBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
 						} else {
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageTheSameBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
@@ -884,34 +763,9 @@ public class InventoryInteractEvents implements Listener {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.34").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.34")) {
 						if(!plugin.BA6.contains(p)) {
-							ItemStack BA6 = new ItemStack(Material.BANNER);
-							BannerMeta BA6M = (BannerMeta) BA6.getItemMeta();
-							BA6M.setBaseColor(DyeColor.WHITE);
-							BA6M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.34").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-							BA6M.addPattern(new Pattern(DyeColor.LIGHT_BLUE, PatternType.STRIPE_BOTTOM));
-							BA6M.addPattern(new Pattern(DyeColor.BROWN, PatternType.STRAIGHT_CROSS));
-							BA6M.addPattern(new Pattern(DyeColor.WHITE, PatternType.HALF_VERTICAL));
-							BA6M.addPattern(new Pattern(DyeColor.BROWN, PatternType.TRIANGLES_TOP));
-							BA6M.addPattern(new Pattern(DyeColor.BROWN, PatternType.HALF_HORIZONTAL_MIRROR));
-							BA6M.addPattern(new Pattern(DyeColor.LIGHT_BLUE, PatternType.CURLY_BORDER));
-							BA6M.addPattern(new Pattern(DyeColor.BLUE, PatternType.STRIPE_BOTTOM));
-							BA6.setItemMeta(BA6M);
-							p.getInventory().setHelmet(BA6);
+							p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA6").item);
 							checkEffect(34, p);
-							plugin.BA6.add(p);
-							plugin.BA1.remove(p);
-							plugin.BA2.remove(p);
-							plugin.BA3.remove(p);
-							plugin.BA4.remove(p);
-							plugin.BA5.remove(p);
-							plugin.BA7.remove(p);
-							plugin.BA8.remove(p);
-							plugin.BA9.remove(p);
-							plugin.BA10.remove(p);
-							plugin.BA11.remove(p);
-							plugin.BA12.remove(p);
-							plugin.BA13.remove(p);
-							plugin.BA14.remove(p);
+							Main.instance.addToBannerList(p, plugin.BA6, 3);
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageNewBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
 						} else {
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageTheSameBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
@@ -923,33 +777,9 @@ public class InventoryInteractEvents implements Listener {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.35").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.35")) {
 						if(!plugin.BA7.contains(p)) {
-							ItemStack BA7 = new ItemStack(Material.BANNER);
-							BannerMeta BA7M = (BannerMeta) BA7.getItemMeta();
-							BA7M.setBaseColor(DyeColor.RED);
-							BA7M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.35").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-							BA7M.addPattern(new Pattern(DyeColor.BLUE, PatternType.TRIANGLE_BOTTOM));
-							BA7M.addPattern(new Pattern(DyeColor.RED, PatternType.STRIPE_SMALL));
-							BA7M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_MIDDLE));
-							BA7M.addPattern(new Pattern(DyeColor.BLUE, PatternType.CURLY_BORDER));
-							BA7M.addPattern(new Pattern(DyeColor.RED, PatternType.CIRCLE_MIDDLE));
-							BA7M.addPattern(new Pattern(DyeColor.BLUE, PatternType.BORDER));
-							BA7.setItemMeta(BA7M);
-							p.getInventory().setHelmet(BA7);
+							p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA7").item);
 							checkEffect(35, p);
-							plugin.BA7.add(p);
-							plugin.BA1.remove(p);
-							plugin.BA2.remove(p);
-							plugin.BA3.remove(p);
-							plugin.BA4.remove(p);
-							plugin.BA5.remove(p);
-							plugin.BA6.remove(p);
-							plugin.BA8.remove(p);
-							plugin.BA9.remove(p);
-							plugin.BA10.remove(p);
-							plugin.BA11.remove(p);
-							plugin.BA12.remove(p);
-							plugin.BA13.remove(p);
-							plugin.BA14.remove(p);
+							Main.instance.addToBannerList(p, plugin.BA7, 3);
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageNewBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
 						} else {
 							p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.HeadBannerSelectMessage.MessageTheSameBanner").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä").replace("[ITEM]", e.getCurrentItem().getItemMeta().getDisplayName()));
@@ -997,105 +827,29 @@ public class InventoryInteractEvents implements Listener {
 								plugin.rotate -= 1;
 								
 								if(plugin.rotate == 14) {
-									ItemStack BA1 = new ItemStack(Material.BANNER);
-									BannerMeta BA1M = (BannerMeta) BA1.getItemMeta();
-									BA1M.setBaseColor(DyeColor.RED);
-									BA1M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.29").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									BA1M.addPattern(new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR));
-									BA1M.addPattern(new Pattern(DyeColor.BLACK, PatternType.RHOMBUS_MIDDLE));
-									BA1M.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE));
-									BA1M.addPattern(new Pattern(DyeColor.WHITE, PatternType.CIRCLE_MIDDLE));
-									BA1M.addPattern(new Pattern(DyeColor.RED, PatternType.STRIPE_TOP));
-									BA1M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM));
-									BA1.setItemMeta(BA1M);
-									p.getInventory().setHelmet(BA1);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA1").item);
 								}
 								if(plugin.rotate == 13) {
-									ItemStack BA2 = new ItemStack(Material.BANNER);
-									BannerMeta BA2M = (BannerMeta) BA2.getItemMeta();
-									BA2M.setBaseColor(DyeColor.WHITE);
-									BA2M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.30").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									BA2M.addPattern(new Pattern(DyeColor.BLACK, PatternType.FLOWER));
-									BA2M.addPattern(new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR));
-									BA2M.addPattern(new Pattern(DyeColor.BLACK, PatternType.TRIANGLES_TOP));
-									BA2M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_CENTER));
-									BA2M.addPattern(new Pattern(DyeColor.BLACK, PatternType.CREEPER));
-									BA2M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM));
-									BA2.setItemMeta(BA2M);
-									p.getInventory().setHelmet(BA2);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA2").item);
 								}
 								if(plugin.rotate == 12) {
-									ItemStack BA3 = new ItemStack(Material.BANNER);
-									BannerMeta BA3M = (BannerMeta) BA3.getItemMeta();
-									BA3M.setBaseColor(DyeColor.PURPLE);
-									BA3M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.31").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									BA3M.addPattern(new Pattern(DyeColor.PURPLE, PatternType.STRIPE_MIDDLE));
-									BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.CREEPER));
-									BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.CURLY_BORDER));
-									BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_CENTER));
-									BA3M.addPattern(new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_TOP));
-									BA3.setItemMeta(BA3M);
-									p.getInventory().setHelmet(BA3);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA3").item);
 								}
 								if(plugin.rotate == 11) {
-									ItemStack BA4 = new ItemStack(Material.BANNER);
-									BannerMeta BA4M = (BannerMeta) BA4.getItemMeta();
-									BA4M.setBaseColor(DyeColor.ORANGE);
-									BA4M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.32").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									BA4M.addPattern(new Pattern(DyeColor.YELLOW, PatternType.BRICKS));
-									BA4M.addPattern(new Pattern(DyeColor.CYAN, PatternType.HALF_HORIZONTAL));
-									BA4M.addPattern(new Pattern(DyeColor.LIME, PatternType.FLOWER));
-									BA4M.addPattern(new Pattern(DyeColor.CYAN, PatternType.BORDER));
-									BA4M.addPattern(new Pattern(DyeColor.LIME, PatternType.CIRCLE_MIDDLE));
-									BA4M.addPattern(new Pattern(DyeColor.CYAN, PatternType.CURLY_BORDER));
-									BA4.setItemMeta(BA4M);
-									p.getInventory().setHelmet(BA4);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA4").item);
 								}
 								if(plugin.rotate == 10) {
-									ItemStack BA5 = new ItemStack(Material.BANNER);
-									BannerMeta BA5M = (BannerMeta) BA5.getItemMeta();
-									BA5M.setBaseColor(DyeColor.WHITE);
-									BA5M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.33").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									BA5M.addPattern(new Pattern(DyeColor.GREEN, PatternType.RHOMBUS_MIDDLE));
-									BA5M.addPattern(new Pattern(DyeColor.BROWN, PatternType.STRIPE_BOTTOM));
-									BA5M.addPattern(new Pattern(DyeColor.ORANGE, PatternType.STRIPE_CENTER));
-									BA5M.addPattern(new Pattern(DyeColor.BROWN, PatternType.BORDER));
-									BA5M.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE));
-									BA5M.addPattern(new Pattern(DyeColor.BLACK, PatternType.HALF_HORIZONTAL));
-									BA5.setItemMeta(BA5M);
-									p.getInventory().setHelmet(BA5);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA5").item);
 								}
 								if(plugin.rotate == 9) {
-									ItemStack BA6 = new ItemStack(Material.BANNER);
-									BannerMeta BA6M = (BannerMeta) BA6.getItemMeta();
-									BA6M.setBaseColor(DyeColor.WHITE);
-									BA6M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.34").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									BA6M.addPattern(new Pattern(DyeColor.LIGHT_BLUE, PatternType.STRIPE_BOTTOM));
-									BA6M.addPattern(new Pattern(DyeColor.BROWN, PatternType.STRAIGHT_CROSS));
-									BA6M.addPattern(new Pattern(DyeColor.WHITE, PatternType.HALF_VERTICAL));
-									BA6M.addPattern(new Pattern(DyeColor.BROWN, PatternType.TRIANGLES_TOP));
-									BA6M.addPattern(new Pattern(DyeColor.BROWN, PatternType.HALF_HORIZONTAL_MIRROR));
-									BA6M.addPattern(new Pattern(DyeColor.LIGHT_BLUE, PatternType.CURLY_BORDER));
-									BA6M.addPattern(new Pattern(DyeColor.BLUE, PatternType.STRIPE_BOTTOM));
-									BA6.setItemMeta(BA6M);
-									p.getInventory().setHelmet(BA6);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA6").item);
 								}
 								if(plugin.rotate == 8) {
-									ItemStack BA7 = new ItemStack(Material.BANNER);
-									BannerMeta BA7M = (BannerMeta) BA7.getItemMeta();
-									BA7M.setBaseColor(DyeColor.RED);
-									BA7M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.35").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									BA7M.addPattern(new Pattern(DyeColor.BLUE, PatternType.TRIANGLE_BOTTOM));
-									BA7M.addPattern(new Pattern(DyeColor.RED, PatternType.STRIPE_SMALL));
-									BA7M.addPattern(new Pattern(DyeColor.WHITE, PatternType.STRIPE_MIDDLE));
-									BA7M.addPattern(new Pattern(DyeColor.BLUE, PatternType.CURLY_BORDER));
-									BA7M.addPattern(new Pattern(DyeColor.RED, PatternType.CIRCLE_MIDDLE));
-									BA7M.addPattern(new Pattern(DyeColor.BLUE, PatternType.BORDER));
-									BA7.setItemMeta(BA7M);
-									p.getInventory().setHelmet(BA7);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("BA7").item);
 								}
 								if(plugin.rotate == 7) {
-									
+									//TEMP
+									plugin.rotate = 14;
 								}
 								if(plugin.rotate == 6) {
 									
@@ -1125,7 +879,7 @@ public class InventoryInteractEvents implements Listener {
 						p.closeInventory();
 					}  else {
 						if(p.getInventory().getHelmet() != null) {
-							if(p.getInventory().getHelmet().getType().equals(Material.BANNER)) {
+							if(p.getInventory().getHelmet().getType().toString().contains("BANNER")) {
 								p.getInventory().setHelmet(null);
 							}
 						}
@@ -1143,5 +897,4 @@ public class InventoryInteractEvents implements Listener {
 		}
 		
 	}
-	*/
 }
