@@ -512,7 +512,7 @@ public class InventoryInteractEvents implements Listener {
 				p.openInventory(plugin.inv2);														
 			}
 			*/
-			/*
+			
 			if(e.getCurrentItem().getType().equals(Material.ARMOR_STAND) && (e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.GUI.RotateItemName").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä")))) {
 				if(p.hasPermission("HeadBanner.Rotate")) {
 					if(!plugin.RB.contains(p.getName())) {
@@ -524,116 +524,46 @@ public class InventoryInteractEvents implements Listener {
 								plugin.rotate -= 1;
 																
 								if(plugin.rotate == 14) {
-									ItemStack R1 = new ItemStack(Material.BANNER);
-									BannerMeta R1M = (BannerMeta) R1.getItemMeta();
-									R1M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.1").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									R1M.setBaseColor(DyeColor.BLACK);
-									R1.setItemMeta(R1M);
-									p.getInventory().setHelmet(R1);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B1").item);
 								}						
 								if(plugin.rotate == 13) {
-									ItemStack B2 = new ItemStack(Material.BANNER);
-									BannerMeta B2M = (BannerMeta) B2.getItemMeta();
-									B2M.setBaseColor(DyeColor.WHITE);
-									B2M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.2").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B2.setItemMeta(B2M);
-									p.getInventory().setHelmet(B2);							
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B2").item);
 								}
 								if(plugin.rotate == 12) {
-									ItemStack B3 = new ItemStack(Material.BANNER);
-									BannerMeta B3M = (BannerMeta) B3.getItemMeta();
-									B3M.setBaseColor(DyeColor.GRAY);
-									B3M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.3").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B3.setItemMeta(B3M);
-									p.getInventory().setHelmet(B3);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B3").item);
 								}
 								if(plugin.rotate == 11) {
-									ItemStack B4 = new ItemStack(Material.BANNER);
-									BannerMeta B4M = (BannerMeta) B4.getItemMeta();
-									B4M.setBaseColor(DyeColor.BLUE);
-									B4M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.4").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B4.setItemMeta(B4M);
-									p.getInventory().setHelmet(B4);		
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B4").item);	
 								}
 								if(plugin.rotate == 10) {
-									ItemStack B5 = new ItemStack(Material.BANNER);
-									BannerMeta B5M = (BannerMeta) B5.getItemMeta();
-									B5M.setBaseColor(DyeColor.GREEN);
-									B5M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.5").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B5.setItemMeta(B5M);
-									p.getInventory().setHelmet(B5);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B5").item);
 								}
 								if(plugin.rotate == 9) {
-									ItemStack B6 = new ItemStack(Material.BANNER);
-									BannerMeta B6M = (BannerMeta) B6.getItemMeta();
-									B6M.setBaseColor(DyeColor.CYAN);
-									B6M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.6").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B6.setItemMeta(B6M);
-									p.getInventory().setHelmet(B6);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B6").item);
 								}
 								if(plugin.rotate == 8) {
-									ItemStack B7 = new ItemStack(Material.BANNER);
-									BannerMeta B7M = (BannerMeta) B7.getItemMeta();
-									B7M.setBaseColor(DyeColor.YELLOW);
-									B7M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.7").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B7.setItemMeta(B7M);
-									p.getInventory().setHelmet(B7);	
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B7").item);
 								}
 								if(plugin.rotate == 7) {
-									ItemStack B8 = new ItemStack(Material.BANNER);
-									BannerMeta B8M = (BannerMeta) B8.getItemMeta();
-									B8M.setBaseColor(DyeColor.LIGHT_BLUE);
-									B8M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.8").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B8.setItemMeta(B8M);
-									p.getInventory().setHelmet(B8);	
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B8").item);
 								}
 								if(plugin.rotate == 6) {
-									ItemStack B9 = new ItemStack(Material.BANNER);
-									BannerMeta B9M = (BannerMeta) B9.getItemMeta();
-									B9M.setBaseColor(DyeColor.RED);
-									B9M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.9").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B9.setItemMeta(B9M);
-									p.getInventory().setHelmet(B9);	
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B9").item);
 								}
 								if(plugin.rotate == 5) {
-									ItemStack B10 = new ItemStack(Material.BANNER);
-									BannerMeta B10M = (BannerMeta) B10.getItemMeta();
-									B10M.setBaseColor(DyeColor.LIME);
-									B10M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.10").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B10.setItemMeta(B10M);
-									p.getInventory().setHelmet(B10);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B10").item);
 								}
 								if(plugin.rotate == 4) {
-									ItemStack B11 = new ItemStack(Material.BANNER);
-									BannerMeta B11M = (BannerMeta) B11.getItemMeta();
-									B11M.setBaseColor(DyeColor.ORANGE);
-									B11M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.11").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B11.setItemMeta(B11M);
-									p.getInventory().setHelmet(B11);	
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B11").item);	
 								}
 								if(plugin.rotate == 3) {
-									ItemStack B12 = new ItemStack(Material.BANNER);
-									BannerMeta B12M = (BannerMeta) B12.getItemMeta();
-									B12M.setBaseColor(DyeColor.PINK);
-									B12M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.12").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B12.setItemMeta(B12M);
-									p.getInventory().setHelmet(B12);	
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B12").item);	
 								}
 								if(plugin.rotate == 2) {
-									ItemStack B13 = new ItemStack(Material.BANNER);
-									BannerMeta B13M = (BannerMeta) B13.getItemMeta();
-									B13M.setBaseColor(DyeColor.MAGENTA);
-									B13M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.13").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B13.setItemMeta(B13M);
-									p.getInventory().setHelmet(B13);	
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B13").item);	
 								}
 								if(plugin.rotate == 1) {
-									ItemStack B14 = new ItemStack(Material.BANNER);
-									BannerMeta B14M = (BannerMeta) B14.getItemMeta();
-									B14M.setBaseColor(DyeColor.SILVER);
-									B14M.setDisplayName(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.14").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
-									B14.setItemMeta(B14M);
-									p.getInventory().setHelmet(B14);
+									p.getInventory().setHelmet(ItemHandler.Banner.getBannerById("B14").item);
 								}
 								if(plugin.rotate == 0) {
 									plugin.rotate = 14; 
@@ -645,7 +575,7 @@ public class InventoryInteractEvents implements Listener {
 						p.closeInventory();
 					} else {
 						if(p.getInventory().getHelmet() != null) {
-							if(p.getInventory().getHelmet().getType().equals(Material.BANNER)) {
+							if(p.getInventory().getHelmet().getType().toString().contains("BANNER")) {
 								p.getInventory().setHelmet(null);
 							}
 						}
@@ -659,7 +589,7 @@ public class InventoryInteractEvents implements Listener {
 					p.sendMessage(plugin.prefix + plugin.getConfig().getString("HeadBanner.NoPermMessage").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"));
 				}
 			}
-			*/
+			
 		}				
 	}
 	
@@ -667,7 +597,6 @@ public class InventoryInteractEvents implements Listener {
 	
 	
 	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void OnBannerMenuInv2Interact(InventoryClickEvent e) {
 		/*

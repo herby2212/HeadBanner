@@ -128,7 +128,6 @@ public class ItemHandler {
 		ItemStack B11 = new Banner("B11", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.11"), XMaterial.ORANGE_BANNER, DyeColor.ORANGE).item;
 		ItemStack B12 = new Banner("B12", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.12"), XMaterial.PINK_BANNER, DyeColor.PINK).item;
 		ItemStack B13 = new Banner("B13", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.13"), XMaterial.MAGENTA_BANNER, DyeColor.MAGENTA).item;
-		//Light Grey is SILVER before 1.13 TODO
 		DyeColor d;
 		if(XMaterial.isNewVersion()) {
 			d = DyeColor.valueOf("LIGHT_GRAY");
