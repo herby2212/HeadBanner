@@ -1,29 +1,30 @@
 package de.Herbystar.HeadBanner.Events;
 
 import org.bukkit.Bukkit;
-import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.block.banner.Pattern;
-import org.bukkit.block.banner.PatternType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BannerMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import de.Herbystar.HeadBanner.Main;
 import de.Herbystar.HeadBanner.Utilities.ItemHandler;
-import de.Herbystar.HeadBanner.Utilities.XMaterial;
 
 public class InventoryInteractEvents implements Listener {
 	
 	Main plugin;
 	public InventoryInteractEvents(Main main) {
 		plugin = main;
+	}
+	
+	private String getInventoryName(InventoryClickEvent e) {
+		try {
+			return e.getView().getTitle();
+		} catch(Exception ex) {
+			return e.getInventory().getName();
+		}
 	}
 	
 	public void checkEffect(int bannerNumber, Player p) {
@@ -40,13 +41,12 @@ public class InventoryInteractEvents implements Listener {
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void OnBannerMenuInvInteract(InventoryClickEvent e) {
 		final Player p = (Player) e.getWhoClicked();
-		if(e.getInventory().getName().equals(plugin.getConfig().getString("HeadBanner.BannerInventory.Side1Title").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
+		if(getInventoryName(e).equals(plugin.getConfig().getString("HeadBanner.BannerInventory.Side1Title").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 			e.setCancelled(true);
-			if(e.getCurrentItem() != null && e.getCurrentItem().getType().equals(XMaterial.matchXMaterial("BANNER").get().parseMaterial())) {
+			if(e.getCurrentItem() != null && e.getCurrentItem().getType().toString().contains("BANNER")) {
 				if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.1").replace("&", "§").replace("Oe", "Ö").replace("oe", "ö").replace("Ue", "Ü").replace("Ae", "Ä").replace("ae", "ä"))) {
 					if(p.hasPermission("HeadBanner.Banner.1")) {
 						if(!plugin.B1.contains(p)) {

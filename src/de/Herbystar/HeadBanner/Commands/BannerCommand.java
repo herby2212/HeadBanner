@@ -36,6 +36,7 @@ public class BannerCommand implements CommandExecutor {
 						p.sendMessage(plugin.prefix + "§aUse §e/Banner <BannerName or Number(1-42)> §ato select a Banner manuel!");
 						return true;
 					}
+					/*
 					//Banner clear
 					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Clear")) {
@@ -1675,7 +1676,9 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
+						
 					}
+					*/
 				} else {
 					p.sendMessage(plugin.prefix + "§cThe plugin is not enabled!");
 					return true;

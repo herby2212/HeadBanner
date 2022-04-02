@@ -1,26 +1,18 @@
 package de.Herbystar.HeadBanner.Events;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import de.Herbystar.HeadBanner.Main;
+import de.Herbystar.HeadBanner.Utilities.XMaterial;
 
 public class InventoryClickEvents implements Listener {
 	
 	Main plugin;
 	public InventoryClickEvents(Main main) {
 		plugin = main;
-	}
-	
-	private String getInventoryName(InventoryClickEvent e) {
-		try {
-			return e.getView().getTitle();
-		} catch(Exception ex) {
-			return e.getInventory().getName();
-		}
 	}
 	
 	//AntiItemMove JoinItem / Banner (Head)
@@ -31,7 +23,7 @@ public class InventoryClickEvents implements Listener {
 	    	if(plugin.getConfig().getStringList("HeadBanner.Worlds").contains(p.getWorld().getName())) {
 				if(plugin.getConfig().getBoolean("HeadBanner.JoinItem.AntiMove") == true) {
 					if(e.getCurrentItem() != null) {
-						if(e.getCurrentItem().getType().equals(Material.SKULL_ITEM)) {
+						if(e.getCurrentItem().getType().equals(XMaterial.PLAYER_HEAD.parseMaterial())) {
 							if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.replaceString(plugin.getConfig().getString("HeadBanner.JoinItem.Name")))) {
 								e.setCancelled(true);
 							}
@@ -40,7 +32,7 @@ public class InventoryClickEvents implements Listener {
 				}
 				if(plugin.getConfig().getBoolean("HeadBanner.HeadSlotLock") == true) {
 					if(e.getCurrentItem() != null) {
-						if(e.getCurrentItem().getType().equals(Material.BANNER)) {
+						if(e.getCurrentItem().getType().toString().contains("BANNER")) {
 							if(e.getCurrentItem().getItemMeta().getDisplayName() != null) {
 								if(e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.replaceString(plugin.getConfig().getString("HeadBanner.BannerDisplayNames.1")))) {
 									e.setCancelled(true);

@@ -32,9 +32,9 @@ public class ItemHandler {
 		public ItemStack item;
 		public String id;
 		
-		public Banner(String id, String displayName, DyeColor baseColor) {
+		public Banner(String id, String displayName, XMaterial material, DyeColor baseColor) {
 			this.id = id;
-			this.item = createBanner(displayName, baseColor);
+			this.item = createBanner(displayName, material, baseColor);
 			
 			bannerCollection.add(this);
 		}
@@ -94,8 +94,12 @@ public class ItemHandler {
 	}
 	
 	@SuppressWarnings("deprecation")
-	private static ItemStack createBanner(String displayName, DyeColor baseColor) {
-		ItemStack b = new ItemStack(XMaterial.matchXMaterial("BANNER").get().parseMaterial());
+	private static ItemStack createBanner(String displayName, XMaterial material, DyeColor baseColor) {
+		Material m = material.parseMaterial();
+		if(!XMaterial.isNewVersion()) {
+			m = Material.valueOf("BANNER");
+		}
+		ItemStack b = new ItemStack(m);
 		BannerMeta bm = (BannerMeta) b.getItemMeta();
 		bm.setDisplayName(Main.instance.replaceString(displayName));
 		bm.setBaseColor(baseColor);
@@ -111,20 +115,28 @@ public class ItemHandler {
 		Inventory i = Bukkit.getServer().createInventory(null, Main.instance.getConfig().getInt("HeadBanner.InventorySize.1"), 
 				Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.BannerInventory.Side1Title")));
 		
-		ItemStack B1 = new Banner("B1", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.1"), DyeColor.BLACK).item;
-		ItemStack B2 = new Banner("B2", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.2"), DyeColor.WHITE).item;
-		ItemStack B3 = new Banner("B3", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.3"), DyeColor.GRAY).item;
-		ItemStack B4 = new Banner("B4", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.4"), DyeColor.BLUE).item;
-		ItemStack B5 = new Banner("B5", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.5"), DyeColor.GREEN).item;
-		ItemStack B6 = new Banner("B6", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.6"), DyeColor.CYAN).item;
-		ItemStack B7 = new Banner("B7", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.7"), DyeColor.YELLOW).item;
-		ItemStack B8 = new Banner("B8", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.8"), DyeColor.LIGHT_BLUE).item;
-		ItemStack B9 = new Banner("B9", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.9"), DyeColor.RED).item;
-		ItemStack B10 = new Banner("B10", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.10"), DyeColor.LIME).item;
-		ItemStack B11 = new Banner("B11", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.11"), DyeColor.ORANGE).item;
-		ItemStack B12 = new Banner("B12", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.12"), DyeColor.PINK).item;
-		ItemStack B13 = new Banner("B13", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.13"), DyeColor.MAGENTA).item;
-		ItemStack B14 = new Banner("B14", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.14"), DyeColor.LIGHT_GRAY).item;	
+		ItemStack B1 = new Banner("B1", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.1"), XMaterial.BLACK_BANNER, DyeColor.BLACK).item;	
+		ItemStack B2 = new Banner("B2", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.2"), XMaterial.WHITE_BANNER, DyeColor.WHITE).item;
+		ItemStack B3 = new Banner("B3", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.3"), XMaterial.GRAY_BANNER, DyeColor.GRAY).item;
+		ItemStack B4 = new Banner("B4", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.4"), XMaterial.BLUE_BANNER, DyeColor.BLUE).item;
+		ItemStack B5 = new Banner("B5", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.5"), XMaterial.GREEN_BANNER, DyeColor.GREEN).item;
+		ItemStack B6 = new Banner("B6", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.6"), XMaterial.CYAN_BANNER, DyeColor.CYAN).item;
+		ItemStack B7 = new Banner("B7", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.7"), XMaterial.YELLOW_BANNER, DyeColor.YELLOW).item;
+		ItemStack B8 = new Banner("B8", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.8"), XMaterial.LIGHT_BLUE_BANNER, DyeColor.LIGHT_BLUE).item;
+		ItemStack B9 = new Banner("B9", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.9"), XMaterial.RED_BANNER, DyeColor.RED).item;
+		ItemStack B10 = new Banner("B10", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.10"), XMaterial.LIME_BANNER, DyeColor.LIME).item;
+		ItemStack B11 = new Banner("B11", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.11"), XMaterial.ORANGE_BANNER, DyeColor.ORANGE).item;
+		ItemStack B12 = new Banner("B12", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.12"), XMaterial.PINK_BANNER, DyeColor.PINK).item;
+		ItemStack B13 = new Banner("B13", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.13"), XMaterial.MAGENTA_BANNER, DyeColor.MAGENTA).item;
+		//Light Grey is SILVER before 1.13 TODO
+		DyeColor d;
+		if(XMaterial.isNewVersion()) {
+			d = DyeColor.valueOf("LIGHT_GRAY");
+		} else {
+			d = DyeColor.valueOf("SILVER");
+		}
+		ItemStack B14 = new Banner("B14", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.14"), XMaterial.LIGHT_GRAY_BANNER, d).item;
+			
 		
 		ItemStack E = new ItemStack(Material.BARRIER);
 		ItemMeta EM = E.getItemMeta();
