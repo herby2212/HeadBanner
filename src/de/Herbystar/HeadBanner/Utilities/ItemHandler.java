@@ -22,6 +22,7 @@ public class ItemHandler {
 	
 	public static class Banner {
 		public ItemStack item;
+		public String displayName;
 		public String id;
 		
 		public Banner(String id, String displayName, XMaterial material, DyeColor baseColor) {
@@ -34,6 +35,7 @@ public class ItemHandler {
 		public Banner(String id, String displayName, XMaterial material, DyeColor baseColor, List<Pattern> list) {
 			this.id = id;
 			this.item = createBanner(displayName, material, baseColor, list);
+			this.displayName = this.item.getItemMeta().getDisplayName();
 			
 			bannerCollection.add(this);
 		}
