@@ -7,6 +7,8 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.block.banner.Pattern;
+import org.bukkit.block.banner.PatternType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -35,6 +37,13 @@ public class ItemHandler {
 		public Banner(String id, String displayName, XMaterial material, DyeColor baseColor) {
 			this.id = id;
 			this.item = createBanner(displayName, material, baseColor);
+			
+			bannerCollection.add(this);
+		}
+		
+		public Banner(String id, String displayName, XMaterial material, DyeColor baseColor, List<Pattern> list) {
+			this.id = id;
+			this.item = createBanner(displayName, material, baseColor, list);
 			
 			bannerCollection.add(this);
 		}
@@ -93,8 +102,12 @@ public class ItemHandler {
 	    }
 	}
 	
-	@SuppressWarnings("deprecation")
 	private static ItemStack createBanner(String displayName, XMaterial material, DyeColor baseColor) {
+		return createBanner(displayName, material, baseColor, null);
+	}
+	
+	@SuppressWarnings("deprecation")
+	private static ItemStack createBanner(String displayName, XMaterial material, DyeColor baseColor, List<Pattern> patterns) {
 		Material m = material.parseMaterial();
 		if(!XMaterial.isNewVersion()) {
 			m = Material.valueOf("BANNER");
@@ -103,6 +116,11 @@ public class ItemHandler {
 		BannerMeta bm = (BannerMeta) b.getItemMeta();
 		bm.setDisplayName(Main.instance.replaceString(displayName));
 		bm.setBaseColor(baseColor);
+		if(patterns != null) {
+			for(Pattern pattern : patterns) {
+				bm.addPattern(pattern);
+			}
+		}
 		b.setItemMeta(bm);
 		
 		return b;
@@ -217,6 +235,164 @@ public class ItemHandler {
 			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.NextSide1"), N);
 		}
 		Main.instance.inv = i;
+		return i;
+
+	}
+	
+	public static Inventory getInventoryPageTwo() {
+		if(Main.instance.inv2 != null) {
+			return Main.instance.inv2;
+		}
+		Inventory i = Bukkit.getServer().createInventory(null, Main.instance.getConfig().getInt("HeadBanner.InventorySize.2"), 
+				Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.BannerInventory.Side2Title")));
+		
+		ItemStack BP1 = new Banner("BP1", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.15"), XMaterial.WHITE_BANNER, DyeColor.WHITE, 
+				Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.BORDER), new Pattern(DyeColor.BLACK, PatternType.SKULL))).item;	
+		ItemStack BP2 = new Banner("BP2", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.16"), XMaterial.BLACK_BANNER, DyeColor.BLACK,
+				Arrays.asList(
+						new Pattern(DyeColor.BLACK, PatternType.HALF_HORIZONTAL),
+						new Pattern(DyeColor.GREEN, PatternType.TRIANGLE_TOP),
+						new Pattern(DyeColor.RED, PatternType.STRIPE_SMALL),
+						new Pattern(DyeColor.GREEN, PatternType.SKULL),
+						new Pattern(DyeColor.GREEN, PatternType.TRIANGLES_TOP),
+						new Pattern(DyeColor.GREEN, PatternType.CURLY_BORDER))).item;
+		ItemStack BP3 = new Banner("BP3", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.17"), XMaterial.LIME_BANNER, DyeColor.LIME,
+				Arrays.asList(
+						new Pattern(DyeColor.YELLOW, PatternType.RHOMBUS_MIDDLE),
+						new Pattern(DyeColor.RED, PatternType.BORDER),
+						new Pattern(DyeColor.YELLOW, PatternType.FLOWER),
+						new Pattern(DyeColor.RED, PatternType.CIRCLE_MIDDLE))).item;
+		ItemStack BP4 = new Banner("BP4", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.18"), XMaterial.BROWN_BANNER, DyeColor.BROWN,
+				Arrays.asList(
+						new Pattern(DyeColor.YELLOW, PatternType.MOJANG))).item;
+		ItemStack BP5 = new Banner("BP5", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.19"), XMaterial.BLUE_BANNER, DyeColor.BLUE,
+				Arrays.asList(
+						new Pattern(DyeColor.LIGHT_BLUE, PatternType.CURLY_BORDER),
+						new Pattern(DyeColor.LIGHT_BLUE, PatternType.FLOWER),
+						new Pattern(DyeColor.LIGHT_BLUE, PatternType.TRIANGLES_TOP),
+						new Pattern(DyeColor.LIGHT_BLUE, PatternType.TRIANGLES_BOTTOM),
+						new Pattern(DyeColor.BLUE, PatternType.CIRCLE_MIDDLE))).item;
+		ItemStack BP6 = new Banner("BP6", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.20"), XMaterial.BLACK_BANNER, DyeColor.BLACK,
+				Arrays.asList(
+						new Pattern(DyeColor.ORANGE, PatternType.TRIANGLE_BOTTOM),
+						new Pattern(DyeColor.YELLOW, PatternType.RHOMBUS_MIDDLE),
+						new Pattern(DyeColor.RED, PatternType.BORDER),
+						new Pattern(DyeColor.RED, PatternType.TRIANGLES_TOP))).item;
+		ItemStack BP7 = new Banner("BP7", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.21"), XMaterial.BLACK_BANNER, DyeColor.BLACK,
+				Arrays.asList(
+						new Pattern(DyeColor.GRAY, PatternType.BORDER),
+						new Pattern(DyeColor.GRAY, PatternType.STRIPE_CENTER),
+						new Pattern(DyeColor.RED, PatternType.SKULL))).item;
+		ItemStack BP8 = new Banner("BP8", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.22"), XMaterial.LIME_BANNER, DyeColor.LIME,
+				Arrays.asList(
+						new Pattern(DyeColor.RED, PatternType.BRICKS),
+						new Pattern(DyeColor.YELLOW, PatternType.FLOWER),
+						new Pattern(DyeColor.YELLOW, PatternType.FLOWER),
+						new Pattern(DyeColor.LIME, PatternType.CIRCLE_MIDDLE),
+						new Pattern(DyeColor.RED, PatternType.BORDER))).item;
+		ItemStack BP9 = new Banner("BP9", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.23"), XMaterial.BLACK_BANNER, DyeColor.BLACK,
+				Arrays.asList(
+						new Pattern(DyeColor.YELLOW, PatternType.CROSS),
+						new Pattern(DyeColor.YELLOW, PatternType.STRAIGHT_CROSS),
+						new Pattern(DyeColor.RED, PatternType.CURLY_BORDER))).item;
+		ItemStack BP10 = new Banner("BP10", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.24"), XMaterial.BLACK_BANNER, DyeColor.BLACK,
+				Arrays.asList(
+						new Pattern(DyeColor.RED, PatternType.CROSS),
+						new Pattern(DyeColor.RED, PatternType.BORDER))).item;
+		ItemStack BP11 = new Banner("BP11", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.25"), XMaterial.BLACK_BANNER, DyeColor.BLACK,
+				Arrays.asList(
+						new Pattern(DyeColor.YELLOW, PatternType.CREEPER),
+						new Pattern(DyeColor.LIME, PatternType.GRADIENT_UP))).item;
+		ItemStack BP12 = new Banner("BP12", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.26"), XMaterial.YELLOW_BANNER, DyeColor.YELLOW,
+				Arrays.asList(
+						new Pattern(DyeColor.YELLOW, PatternType.BORDER),
+						new Pattern(DyeColor.LIME, PatternType.CREEPER),
+						new Pattern(DyeColor.LIME, PatternType.CREEPER))).item;
+		ItemStack BP13 = new Banner("BP13", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.27"), XMaterial.BLACK_BANNER, DyeColor.BLACK,
+				Arrays.asList(
+						new Pattern(DyeColor.RED, PatternType.BRICKS),
+						new Pattern(DyeColor.CYAN, PatternType.GRADIENT_UP),
+						new Pattern(DyeColor.ORANGE, PatternType.GRADIENT),
+						new Pattern(DyeColor.WHITE, PatternType.BORDER))).item;
+		ItemStack BP14 = new Banner("BP14", Main.instance.getConfig().getString("HeadBanner.BannerDisplayNames.28"), XMaterial.WHITE_BANNER, DyeColor.WHITE,
+				Arrays.asList(
+						new Pattern(DyeColor.BLACK, PatternType.GRADIENT),
+						new Pattern(DyeColor.BLACK, PatternType.CROSS),
+						new Pattern(DyeColor.BLACK, PatternType.CURLY_BORDER))).item;
+
+		ItemStack B = new ItemStack(Material.MAGMA_CREAM);
+		ItemMeta BM = B.getItemMeta();
+		BM.setDisplayName(Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.GUI.BackSide")));
+		B.setItemMeta(BM);
+		
+		ItemStack R = new ItemStack(Material.ARMOR_STAND);
+		ItemMeta RM = R.getItemMeta();
+		RM.setDisplayName(Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.GUI.RotateItemName")));
+		R.setItemMeta(RM);
+		
+		ItemStack N = new ItemStack(Material.MAGMA_CREAM);
+		ItemMeta NM = N.getItemMeta();
+		NM.setDisplayName(Main.instance.replaceString(Main.instance.getConfig().getString("HeadBanner.GUI.NextSide")));
+		N.setItemMeta(NM);
+		
+		//1 Reihe
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.15") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.15"), BP1);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.16") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.16"), BP2);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.17") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.17"), BP3);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.18") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.18"), BP4);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.19") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.19"), BP5);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.20") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.20"), BP6);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.21") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.21"), BP7);
+		}
+		
+		//2 Reihe
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.22") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.22"), BP8);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.23") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.23"), BP9);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.24") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.24"), BP10);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.25") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.25"), BP11);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.26") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.26"), BP12);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.27") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.27"), BP13);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.28") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.28"), BP14);
+		}
+		
+		
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.RotateItem") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.RotateItem2"), R);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.BackSide") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.BackSide2"), B);
+		}
+		if(Main.instance.getConfig().getBoolean("HeadBanner.FreeSlot.NextSide") == false) {
+			i.setItem(Main.instance.getConfig().getInt("HeadBanner.ItemSlot.NextSide2"), N);
+		}
+		
+		Main.instance.inv2 = i;
 		return i;
 
 	}
