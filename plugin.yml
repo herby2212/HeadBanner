@@ -1,0 +1,81 @@
+name: HeadBanner
+main: de.Herbystar.HeadBanner.Main
+api-version: 1.13
+version: 5.0
+author: Herbystar
+description: Head Plugin with Banner's
+commands:
+  BannerItem:
+    usage: /BannerItem
+    description: Give you the BannerSelectorItem!
+    permission: HeadBanner.Item.Cmd
+  BI:
+    usage: /BI
+    description: Alias for Banner Menu Command!
+    permission: HeadBanner.Item.Cmd
+  Banners:
+    usage: /Banners
+    description: Open the Banner Menu!
+    permission: HeadBanner.Item.Open
+  Banner:
+    usage: /Banner <1-42>
+    description: Set a Banner on your Head with a Command!
+    permission: HeadBanner.Banner
+  BannerRotate:
+    usage: /BannerRotate
+    description: Change the Banner on your head every second!
+    permission: HeadBanner.Rotate
+  B:
+    usage: /b <1-42>
+    description: Alias for /Banner command!
+  HeadBanner:
+    usage: /HeadBanner
+    description: Disable/Enable the plugin via a command!
+permissions:
+  HeadBanner.Banner:
+    description: Erlaubt dir den /Banner Command zu nutzen!
+  HeadBanner.Item.*:
+    description: Erlaubt dir kompletten Zugriff auf das Plugin!
+    children:
+      HeadBanner.Item.Join: true
+      HeadBanner.Item.Open: true
+      HeadBanner.Item.Cmd: true
+  HeadBanner.Banner.*:
+    description: Gives you access to every Banner!
+    children:
+      HeadBanner.Banner.1: true
+      HeadBanner.Banner.2: true
+      HeadBanner.Banner.3: true
+      HeadBanner.Banner.4: true
+      HeadBanner.Banner.5: true
+      HeadBanner.Banner.6: true
+      HeadBanner.Banner.7: true
+      HeadBanner.Banner.8: true
+      HeadBanner.Banner.9: true
+      HeadBanner.Banner.10: true
+      HeadBanner.Banner.11: true
+      HeadBanner.Banner.12: true
+      HeadBanner.Banner.13: true
+      HeadBanner.Banner.14: true
+      HeadBanner.Banner.15: true
+      HeadBanner.Banner.16: true
+      HeadBanner.Banner.17: true
+      HeadBanner.Banner.18: true
+      HeadBanner.Banner.19: true
+      HeadBanner.Banner.20: true
+      HeadBanner.Banner.21: true
+      HeadBanner.Banner.22: true
+      HeadBanner.Banner.23: true
+      HeadBanner.Banner.24: true
+      HeadBanner.Banner.25: true
+      HeadBanner.Banner.26: true
+      HeadBanner.Banner.27: true
+      HeadBanner.Banner.28: true
+      HeadBanner.Banner.29: true
+      HeadBanner.Banner.30: true
+      HeadBanner.Banner.31: true
+      HeadBanner.Banner.32: true
+      HeadBanner.Banner.33: true
+      HeadBanner.Banner.34: true
+      HeadBanner.Banner.35: true
+      

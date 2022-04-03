@@ -1,0 +1,362 @@
+#Config of the plugin use Oe,Ue,Ae for umlauts! Do not change the main Structure of the config or you get a error message on server start!
+HeadBanner:
+  JoinItem:
+    Slot(0-8): 4
+    GiveOnJoin: true
+    AntiMove: false
+    AntiDrop: true
+    Name: '&aHeadBanner Selector'
+    Lore: '&7&oRight-Click to open'
+  Enabled: true
+  HeadSlotLock: true
+  ClearBannerOnLeave: true
+  CustomPrefix: '&4[&aHeadBanner&4] '
+  BannerInventory:
+    Side1Title: '&a&lBanners'
+    Side2Title: '&a&lBanners 2'
+    Side3Title: '&a&lBanners 3'
+  NoPermMessage: '&cYou do not have the right permission!'
+  RotateEnabled: '&eYou have the Rotate function &aactivated!'
+  RotateDisabled: '&eYou have the Rotate function &cdisabled!' 
+  HeadBannerSelectMessage:
+  #[ITEM] is a variable for the Name of the clicked banner! For example: ClickedBanner = RedBanner that means [ITEM] = Red Banner! Only work in this part!
+    MessageNewBanner: '&aYou have the [ITEM]&a equipped!'
+    MessageTheSameBanner: '&aYou have already the [ITEM]&a equipped!'
+  HeadBannerClearMessage:
+    Message: '&cYou no longer have a banner on your head!'
+    NoHeadMessage: '&cYou do not have a banner on your head!'
+  BannerDisplayNames:
+    1: '&0Black &aBanner'
+    2: '&fWhite &aBanner'
+    3: '&8Gray &aBanner'
+    4: '&1Blue &aBanner'
+    5: '&2Green &aBanner'
+    6: '&3Cyan &aBanner'
+    7: '&eYellow &aBanner'
+    8: '&9Light Blue &aBanner'
+    9: '&4Red &aBanner'
+    10: '&aLime &aBanner'
+    11: '&6Orange &aBanner'
+    12: '&dPink &aBanner'
+    13: '&5Magenta &aBanner'
+    14: '&7Silver &aBanner'
+    15: '&fDeaths Head &aBanner'
+    16: '&2Watcher &aBanner'
+    17: '&eStar &aBanner'
+    18: '&6Mojang &aBanner'
+    19: '&1Ocean Pearl &aBanner'
+    20: '&4Far Point &aBanner'
+    21: '&8Jail &aBanner'
+    22: '&cBroken &eWall &aBanner'
+    23: '&eLight &aBanner'
+    24: '&cCross &aBanner'
+    25: '&2Ghost Creeper &aBanner'
+    26: '&2Creeper &aBanner'
+    27: '&fDark Outside &aBanner'
+    28: '&0Black &aand &fWhite &aBanner'
+    29: '&cPokeball &aBanner'
+    30: '&0P&fa&0n&fd&0a &aBanner'
+    31: '&5Enderdragon &aBanner'
+    32: '&bP&ei&bn&ee&ba&ep&bp&el&be &aBanner'
+    33: '&6Villager &aBanner'
+    34: '&9Ship &aBanner'
+    35: '&4Octopi &aBanner'
+    36: '/'
+    37: '/'
+    38: '/'
+    39: '/'
+    40: '/'
+    41: '/'
+    42: '/'
+  InventorySize:
+    1: 36
+    2: 36
+    3: 36
+  FreeSlot:    
+  #Inventory side 1
+    1: false
+    2: false
+    3: false
+    4: false
+    5: false
+    6: false
+    7: false
+    8: false
+    9: false
+    10: false
+    11: false
+    12: false
+    13: false
+    14: false
+  #Inventory side 2
+    15: false
+    16: false
+    17: false
+    18: false
+    19: false
+    20: false
+    21: false
+    22: false
+    23: false
+    24: false
+    25: false
+    26: false
+    27: false
+    28: false
+  #Inventory side 3
+    29: false
+    30: false
+    31: false
+    32: false
+    33: false
+    34: false
+    35: false
+    36: true
+    37: true
+    38: true
+    39: true
+    40: true
+    41: true
+    42: true
+    RotateItem: false
+    CloseItem: false
+    ClearHeadItem: false
+    NextSide: false
+    BackSide: false
+  ItemSlot:
+  #Inventory side 1
+    1: 10
+    2: 11
+    3: 12
+    4: 13
+    5: 14
+    6: 15
+    7: 16
+    8: 19
+    9: 20
+    10: 21
+    11: 22
+    12: 23
+    13: 24
+    14: 25
+    RotateItem1: 27
+    CloseItem1: 34
+    ClearHeadItem1: 33
+    NextSide1: 35
+  #Inventory side 2
+    15: 10
+    16: 11
+    17: 12
+    18: 13
+    19: 14
+    20: 15
+    21: 16
+    22: 19
+    23: 20
+    24: 21
+    25: 22
+    26: 23
+    27: 24
+    28: 25
+    RotateItem2: 31
+    NextSide2: 35
+    BackSide2: 27
+  #Inventory side 3
+    29: 10
+    30: 11
+    31: 12
+    32: 13
+    33: 14
+    34: 15
+    35: 16
+    36: 19
+    37: 20
+    38: 21
+    39: 22
+    40: 23
+    41: 24
+    42: 25
+    RotateItem3: 31
+    CloseItem3: 35
+    BackSide3: 27
+  BannerEffect:
+    Wiki: https://www.spigotmc.org/resources/headbanner-1-8-1-10-with-gui.6038/update?update=120675
+    1:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    2:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    3:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    4:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    5:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    6:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    7:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    8:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    9:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    10:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    11:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    12:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    13:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    14:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    15:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    16:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    17:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    18:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    19:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    20:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    21:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    22:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    23:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    24:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    25:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    26:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    27:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    28:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    29:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    30:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0
+    31:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0      
+    32:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    33:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    34:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    35:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    36:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    37:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    38:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    39:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    40:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    41:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+    42:
+      Effect: NONE
+      Duration: 100
+      Amplifier: 0 
+  GUI:
+    CloseItemName: '&aClose'
+    ClearHeadItemName: '&cClear &aHead'
+    NextSide: '&e&oNext Side ->'
+    BackSide: '&e&o<- Back'
+    RotateItemName: '&aR&eo&at&ea&at&ee'
+  Worlds:
+  - hub
+  - lobby
+  - world
+  
