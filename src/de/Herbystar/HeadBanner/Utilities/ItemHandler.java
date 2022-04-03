@@ -28,6 +28,7 @@ public class ItemHandler {
 		public Banner(String id, String displayName, XMaterial material, DyeColor baseColor) {
 			this.id = id;
 			this.item = createBanner(displayName, material, baseColor);
+			this.displayName = this.item.getItemMeta().getDisplayName();
 			
 			bannerCollection.add(this);
 		}

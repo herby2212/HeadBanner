@@ -31,8 +31,15 @@ public class BannerCommand implements CommandExecutor {
 						return true;
 					}
 					
-					//Banner clear
 					if(args.length == 1) {
+						if(plugin.inv == null || plugin.inv2 == null || plugin.inv3 == null) {
+							ItemHandler.getInventoryPageOne();
+							ItemHandler.getInventoryPageTwo();
+							ItemHandler.getInventoryPageThree();
+						}
+						/**
+						 * Banner clear
+						 */
 						if(args[0].equalsIgnoreCase("Clear")) {
 							if(!(p.getInventory().getHelmet() == null)) {
 								Bukkit.getScheduler().cancelTask(plugin.rotateid);
@@ -88,9 +95,9 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					//Banners on 1 Side
-					if(args.length == 1) {
+						/**
+						 * Banners on Side 1
+						 */
 						if(args[0].equalsIgnoreCase("Black") | (args[0].equalsIgnoreCase("1"))) {
 							if(p.hasPermission("HeadBanner.Banner.1")) {
 								Banner b = ItemHandler.Banner.getBannerById("B1");
@@ -107,8 +114,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("White") | (args[0].equalsIgnoreCase("2"))) {
 							if(p.hasPermission("HeadBanner.Banner.2")) {
 								Banner b = ItemHandler.Banner.getBannerById("B2");
@@ -125,8 +130,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Gray") | (args[0].equalsIgnoreCase("3"))) {
 							if(p.hasPermission("HeadBanner.Banner.3")) {
 								Banner b = ItemHandler.Banner.getBannerById("B3");
@@ -143,8 +146,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Blue") | (args[0].equalsIgnoreCase("4"))) {
 							if(p.hasPermission("HeadBanner.Banner.4")) {
 								Banner b = ItemHandler.Banner.getBannerById("B4");
@@ -161,8 +162,6 @@ public class BannerCommand implements CommandExecutor {
 							}	
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Green") | (args[0].equalsIgnoreCase("5"))) {
 							if(p.hasPermission("HeadBanner.Banner.5")) {
 								Banner b = ItemHandler.Banner.getBannerById("B5");
@@ -179,8 +178,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Cyan") | (args[0].equalsIgnoreCase("6"))) {
 							if(p.hasPermission("HeadBanner.Banner.6")) {
 								Banner b = ItemHandler.Banner.getBannerById("B6");
@@ -197,8 +194,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Yellow") | (args[0].equalsIgnoreCase("7"))) {
 							if(p.hasPermission("HeadBanner.Banner.7")) {
 								Banner b = ItemHandler.Banner.getBannerById("B7");
@@ -215,8 +210,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Light Blue") | (args[0].equalsIgnoreCase("8"))) {
 							if(p.hasPermission("HeadBanner.Banner.8")) {
 								Banner b = ItemHandler.Banner.getBannerById("B8");
@@ -233,8 +226,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Red") | (args[0].equalsIgnoreCase("9"))) {
 							if(p.hasPermission("HeadBanner.Banner.9")) {
 								Banner b = ItemHandler.Banner.getBannerById("B9");
@@ -251,8 +242,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Lime") | (args[0].equalsIgnoreCase("10"))) {
 							if(p.hasPermission("HeadBanner.Banner.10")) {
 								Banner b = ItemHandler.Banner.getBannerById("B10");
@@ -269,8 +258,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Orange") | (args[0].equalsIgnoreCase("11"))) {
 							if(p.hasPermission("HeadBanner.Banner.11")) {
 								Banner b = ItemHandler.Banner.getBannerById("B11");
@@ -287,8 +274,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Pink") | (args[0].equalsIgnoreCase("12"))) {
 							if(p.hasPermission("HeadBanner.Banner.12")) {
 								Banner b = ItemHandler.Banner.getBannerById("B12");
@@ -305,8 +290,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Magenta") | (args[0].equalsIgnoreCase("13"))) {
 							if(p.hasPermission("HeadBanner.Banner.13")) {
 								Banner b = ItemHandler.Banner.getBannerById("B13");
@@ -323,8 +306,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Silver") | (args[0].equalsIgnoreCase("14"))) {
 							if(p.hasPermission("HeadBanner.Banner.14")) {
 								Banner b = ItemHandler.Banner.getBannerById("B14");
@@ -341,10 +322,9 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					
-					//Banners on 2 Side
-					if(args.length == 1) {
+						/**
+						 * Banners on Side 2
+						 */
 						if(args[0].equalsIgnoreCase("Deaths Head") | (args[0].equalsIgnoreCase("15"))) {
 							if(p.hasPermission("HeadBanner.Banner.15")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP1");
@@ -361,8 +341,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Watcher") | (args[0].equalsIgnoreCase("16"))) {
 							if(p.hasPermission("HeadBanner.Banner.16")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP2");
@@ -379,8 +357,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Star") | (args[0].equalsIgnoreCase("17"))) {
 							if(p.hasPermission("HeadBanner.Banner.17")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP3");
@@ -397,8 +373,6 @@ public class BannerCommand implements CommandExecutor {
 							}	
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Mojang") | (args[0].equalsIgnoreCase("18"))) {
 							if(p.hasPermission("HeadBanner.Banner.18")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP4");
@@ -415,8 +389,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Ocean Pearl") | (args[0].equalsIgnoreCase("19"))) {
 							if(p.hasPermission("HeadBanner.Banner.19")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP5");
@@ -433,8 +405,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Far Point") | (args[0].equalsIgnoreCase("20"))) {
 							if(p.hasPermission("HeadBanner.Banner.20")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP6");
@@ -451,8 +421,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Jail") | (args[0].equalsIgnoreCase("21"))) {
 							if(p.hasPermission("HeadBanner.Banner.21")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP7");
@@ -469,8 +437,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Broken Wall") | (args[0].equalsIgnoreCase("22"))) {
 							if(p.hasPermission("HeadBanner.Banner.22")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP8");
@@ -487,8 +453,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Light") | (args[0].equalsIgnoreCase("23"))) {
 							if(p.hasPermission("HeadBanner.Banner.23")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP9");
@@ -505,8 +469,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Cross") | (args[0].equalsIgnoreCase("24"))) {
 							if(p.hasPermission("HeadBanner.Banner.24")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP10");
@@ -523,8 +485,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Ghost Creeper") | (args[0].equalsIgnoreCase("25"))) {
 							if(p.hasPermission("HeadBanner.Banner.25")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP11");
@@ -541,8 +501,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;						
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Creeper") | (args[0].equalsIgnoreCase("26"))) {
 							if(p.hasPermission("HeadBanner.Banner.26")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP12");
@@ -559,8 +517,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Dark Outside") | (args[0].equalsIgnoreCase("27"))) {
 							if(p.hasPermission("HeadBanner.Banner.27")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP13");
@@ -577,8 +533,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Black and White") | (args[0].equalsIgnoreCase("28"))) {
 							if(p.hasPermission("HeadBanner.Banner.28")) {
 								Banner b = ItemHandler.Banner.getBannerById("BP14");
@@ -595,9 +549,9 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					//Banner Side 3
-					if(args.length == 1) {
+						/**
+						 * Banners on Side 3
+						 */
 						if(args[0].equalsIgnoreCase("Pokeball") | (args[0].equalsIgnoreCase("29"))) {
 							if(p.hasPermission("HeadBanner.Banner.29")) {
 								Banner b = ItemHandler.Banner.getBannerById("BA1");
@@ -614,8 +568,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Panda") | (args[0].equalsIgnoreCase("30"))) {
 							if(p.hasPermission("HeadBanner.Banner.30")) {
 								Banner b = ItemHandler.Banner.getBannerById("BA2");
@@ -632,8 +584,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Enderdragon") | (args[0].equalsIgnoreCase("31"))) {
 							if(p.hasPermission("HeadBanner.Banner.31")) {
 								Banner b = ItemHandler.Banner.getBannerById("BA3");
@@ -650,8 +600,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Pineapple") | (args[0].equalsIgnoreCase("32"))) {
 							if(p.hasPermission("HeadBanner.Banner.32")) {
 								Banner b = ItemHandler.Banner.getBannerById("BA4");
@@ -668,8 +616,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Villager") | (args[0].equalsIgnoreCase("33"))) {
 							if(p.hasPermission("HeadBanner.Banner.33")) {
 								Banner b = ItemHandler.Banner.getBannerById("BA5");
@@ -686,8 +632,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Ship") | (args[0].equalsIgnoreCase("34"))) {
 							if(p.hasPermission("HeadBanner.Banner.34")) {
 								Banner b = ItemHandler.Banner.getBannerById("BA6");
@@ -704,8 +648,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-					}
-					if(args.length == 1) {
 						if(args[0].equalsIgnoreCase("Octopi") | (args[0].equalsIgnoreCase("35"))) {
 							if(p.hasPermission("HeadBanner.Banner.35")) {
 								Banner b = ItemHandler.Banner.getBannerById("BA7");
@@ -722,7 +664,6 @@ public class BannerCommand implements CommandExecutor {
 							}
 							return true;
 						}
-						
 					}
 				} else {
 					p.sendMessage(plugin.prefix + "§cThe plugin is not enabled!");
